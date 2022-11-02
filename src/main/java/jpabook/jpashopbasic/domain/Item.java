@@ -4,8 +4,14 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Item을 단독으로 테이블에 저장할 일이 없다고 가정하고 추상클래스로 만들었다.
+ * @DiscriminatorColumn 디폴트값이 name= DType
+ */
 @Entity
-public class Item {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn
+public abstract class Item extends BaseEntity{
 
     @Id @GeneratedValue
     @Column(name = "ITEM_ID")

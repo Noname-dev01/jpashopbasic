@@ -1,5 +1,6 @@
 package jpabook.jpashopbasic;
 
+import jpabook.jpashopbasic.domain.Book;
 import jpabook.jpashopbasic.domain.Order;
 import jpabook.jpashopbasic.domain.OrderItem;
 
@@ -16,8 +17,11 @@ public class JpaMain {
 
         tx.begin();
         try{
-            Order order = new Order();
-            order.addOrderItem(new OrderItem());
+            Book book = new Book();
+            book.setName("JPA1");
+            book.setAuthor("저자");
+
+            em.persist(book);
 
             tx.commit();
         }catch (Exception e){
